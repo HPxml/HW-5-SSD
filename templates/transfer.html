@@ -1,0 +1,18 @@
+<h1>Make a Transfer</h1>
+
+{% if error %}
+  <p style="color: red">{{ error }}</p>
+{% endif %}
+
+<form method="POST" action="/transfer">
+  {{ form.hidden_tag() }}  <!-- CSRF token and hidden fields -->
+
+  <pre>
+  From   {{ form.from_account(size=20) }}
+  To     {{ form.to_account(size=20) }}
+  Amount {{ form.amount(size=20) }}
+         <input type="submit" value="Transfer">
+  </pre>
+</form>
+
+<p><a href="/dashboard">Back to Dashboard</a></p>
