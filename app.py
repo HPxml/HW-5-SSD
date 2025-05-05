@@ -72,16 +72,19 @@ def details():
 @app.route("/transfer", methods=["GET", "POST"])
 def transfer():
     form = TransferForm()
+    error = None
+    success = False
 
     if request.method == "GET":
-        return render_template("transfer.html", form=form)
+        return render_template("transfer.html", form=form, error=error, success=success)
 
     if not logged_in():
         form = LoginForm()
         return render_template("login.html", form=form)
 
     if not form.validate_on_submit():
-        return render_template("transfer.html", form=form, error="Invalid input or CSRF token missing")
+        error = "Invalid input or CSRF token missing"
+        return render_template("transfer.html", form=form, error=error, success=success)
 
     source = form.from_account.data
     target = form.to_account.data
@@ -96,7 +99,8 @@ def transfer():
     if not do_transfer(source, target, amount):
         abort(400, "Something bad happened")
 
-    return redirect("/dashboard"), 303
+    success = True
+    return render_template("transfer.html", form=form, success=success)
 
 @app.route("/logout", methods=['GET'])
 def logout():

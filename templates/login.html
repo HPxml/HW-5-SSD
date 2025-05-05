@@ -6,20 +6,41 @@
   {{ form.hidden_tag() }}
   <p>Email: {{ form.email(size=30) }}</p>
   <p>Password: {{ form.password(size=30) }}</p>
-  <p><input type="submit" value="Login" /></p>
+  <p><input type="submit" value="Login" class="button" /></p>
 </form>
+
+
 
 <style>
   body {
     font-family: Arial, sans-serif;
-    background: #f0f2f5;
-    margin: 0;
+    background: #f9f9fc;
     padding: 2em;
+    color: #333;
+    margin: 0;
   }
+
+  a, .button {
+    display: inline-block;
+    margin: 0.5em 0;
+    padding: 0.5em 1em;
+    background: #a0e7e5;
+    color: #000;
+    text-decoration: none;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+
+  a:hover, .button:hover {
+    background: #b4f8c8;
+  }
+
   form {
     background: white;
     padding: 2em;
-    margin: auto;
+    margin-left: 0;
     max-width: 400px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);

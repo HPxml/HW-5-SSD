@@ -1,21 +1,18 @@
+# 💎 Secure Gem Vault
 
-# 🔐 Secure Flask Web Application
-
-This project is a secure web application built with the Flask framework as part of a web security course. It demonstrates secure user authentication, CSRF and XSS protection, user enumeration defense, and secure transfer functionality — all while using JWT-based sessions and minimal UI styling.
+A secure Flask-based web application where users log in and manage "gems" instead of money — including viewing balances and transferring assets. Designed for both learning and secure software practices.
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🔐 **User Authentication** with PBKDF2 password hashing (via Passlib)
-- 🍪 **JWT Session Management** using cookies
-- 🔒 **CSRF Protection** using Flask-WTF
-- 🚫 **XSS Protection** via auto-escaped Jinja2 templates
-- 🛡️ **SQL Injection Defense** using parameterized queries
-- 👤 **User Enumeration Defense** on login
-- 💸 **Asset Transfer Functionality** (with validation)
-- 🎨 **Minimal Styling** for user interface
-- 🎉 **Fun Animations / Effects** (optional)
+-  Secure login with CSRF protection
+-  Password hashing with salted hashes
+-  “Gems” system instead of traditional balance
+-  Transfer functionality with validation
+-  Protection against XSS/CSRF
+-  Clean, consistent UI with minimal CSS
+-  Success messages with auto-redirects
 
 ---
 
@@ -30,40 +27,70 @@ This project is a secure web application built with the Flask framework as part 
 - **JWT (via PyJWT)**
 
 ---
+## 🗂️ Project Structure
 
-## 🏗️ Setup Instructions
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/yourusername/secure-flask-app.git
-   cd secure-flask-app
-   ```
-
-2. **Create virtual environment**
-
-   ```bash
-   python3 -m venv env
-   source env/bin/activate  # On Windows: .\env\Scripts\activate
-   ```
-
-3. **Install dependencies**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Run the application**
-
-   ```bash
-   export FLASK_ENV=development
-   flask run
-   ```
-
-5. Visit `http://localhost:5000` in your browser.
+```
+.
+├── app.py                  # Main Flask app
+├── forms.py                # WTForms for login and transfer
+├── user_service.py         # Handles user logic
+├── bank.db                 # SQLite DB
+├── bin/
+│   ├── account_service.py  # Business logic for transfers
+│   ├── createdb.py         # DB setup script
+│   ├── makeaccounts.py     # Optional: demo account creator
+├── templates/
+│   ├── login.html
+│   ├── dashboard.html
+│   ├── transfer.html
+│   ├── details.html
+└── static/
+    └── style.css           # Shared CSS (optional)
+```
 
 ---
 
+## 🚀 Getting Started
+
+1. **Install dependencies**
+   ```bash
+   pip install flask flask-wtf
+   ```
+
+2. **Set up the database**
+   ```bash
+   python bin/createdb.py
+   python bin/makeaccounts.py  # optional: demo accounts
+   ```
+
+3. **Run the app**
+   ```bash
+   python app.py
+   ```
+
+4. **Open in browser**
+   Visit `http://localhost:5000`
+
+---
+
+## 🛠 Configuration
+
+Make sure your `SECRET_KEY` is secure in production:
+
+```python
+app.config['SECRET_KEY'] = 'yoursupersecrettokenhere'  # replace with secrets.token_hex(32)
+```
+
+---
+
+## 📸 Screenshots
+
+- Login with styled button
+- Dashboard with gem accounts
+- Transfer form with success feedback
+- Minimal and consistent UI
+
+---
 ## 🧪 Security Defenses Explained
 
 | Vulnerability      | Defense Mechanism                                  |
@@ -77,34 +104,16 @@ This project is a secure web application built with the Flask framework as part 
 | Broken Validation  | All inputs validated via WTForms + custom checks    |
 
 ---
+## 📚 Learning Goals
 
-## 📂 File Structure
-
-```
-secure-flask-app/
-│
-├── app.py                 # Main Flask app with route logic
-├── user_service.py        # Auth + session handling
-├── forms.py               # Flask-WTF form definitions
-├── templates/             # HTML templates (login, dashboard, etc.)
-├── bank.db                # SQLite DB for users/accounts
-└── static/                # Optional CSS or JS if needed
-```
-
----
-
-## 📸 Screenshots (Optional)
-
-> Add screenshots or GIFs here to show transfer animations or UI if you have any.
-
----
-
+This app demonstrates:
+- Secure form handling in Flask
+- CSRF protection via Flask-WTF
+- Frontend feedback for better UX
+- Flask routing and templating
+- Clean and simple design with custom CSS
 ## 🧾 License
 
 MIT License. This project is for educational purposes only.
 
 ---
-
-## 🙏 Acknowledgements
-
-Thanks to Professor [Your Instructor’s Name] and the LMU CMSI-662 Web Security course for the guidance and base structure.
