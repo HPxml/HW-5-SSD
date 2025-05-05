@@ -85,10 +85,16 @@ app.config['SECRET_KEY'] = 'yoursupersecrettokenhere'  # replace with secrets.to
 
 ## 📸 Screenshots
 
-- Login with styled button
-- Dashboard with gem accounts
-- Transfer form with success feedback
-- Minimal and consistent UI
+![alt text](<GEMVAULT (1).png>)
+![alt text](<GEMVAULT (2).png>)
+![alt text](<GEMVAULT (3).png>)
+![alt text](<GEMVAULT (4).png>)
+![alt text](<GEMVAULT (5).png>)
+![alt text](<GEMVAULT (6).png>)
+![alt text](<GEMVAULT (7).png>)
+![alt text](<GEMVAULT (8).png>)
+![alt text](<GEMVAULT (10).png>)
+![alt text](<GEMVAULT (9).png>)
 
 ---
 ## 🧪 Security Defenses Explained
